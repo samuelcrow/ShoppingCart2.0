@@ -100,7 +100,7 @@ const Products = (props) => {
   console.log(`Rendering Products ${JSON.stringify(data)}`);
   // Fetch Data
   const addToCart = (e) => {
-    products.map((element) => {
+    items.map((element) => {
       if (element.name == e.target.name){
         element.instock -= 1;
       }
@@ -114,7 +114,7 @@ const Products = (props) => {
   const deleteCartItem = (index) => {
     let newCart = cart.filter((item, i) => index != i);
     let name = cart[index];
-    products.map((element) => {
+    items.map((element) => {
       if (element.name == name.name){
         element.instock += 1;
       }
@@ -180,8 +180,8 @@ const Products = (props) => {
   const restockProducts = (url) => {
     doFetch(url);
     let newItems = data.map((item) => {
-      let {name, country, price, instock} = item;
-      return {name, country, price, instock};
+      let {name, country, cost, instock} = item;
+      return {name, country, cost, instock};
     })
     setItems([...items, ...newItems]);
   };
